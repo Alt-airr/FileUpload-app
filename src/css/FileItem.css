@@ -1,0 +1,29 @@
+.fileItem {
+    padding: 10px;
+    background: #32B141;
+    display: flex;
+    border-radius: 3px;
+    font-weight: 600;
+    color: whitesmoke;
+    width: 100%;
+    margin-top: 1px;
+    transition: 1s;
+}
+
+.col:last-child {
+    border: none;
+}
+
+.col {width: 25%;
+    border-right: 1px solid white;
+    text-align: center}
+
+.del-btn {
+    margin: 0 auto;
+    border-radius: 3px;
+    padding: 3px 15px;
+    cursor: pointer;
+    color: lightgray;
+    border: none;
+    background-color: #00874F;
+}

@@ -1,0 +1,42 @@
+.app-wrapper {
+    padding: 20px;
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: palegreen;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.headers {
+    padding: 10px;
+    background: seagreen;
+    display: flex;
+    border-radius: 5px 5px 0 0;
+    font-weight: 800;
+    color: lightgrey;
+    width: 100%;
+    transition: 0.5s;
+}
+
+.titleCol:last-child {
+    border: none;
+}
+
+.titleCol {
+    border-right: 1px solid white;
+    width: 25%;
+    text-align: center;
+}
+
+.progress {
+    margin-top: 15px;
+}
+
+.btn-success {
+    width: 300px;
+    margin: 0 auto;
+}
+
