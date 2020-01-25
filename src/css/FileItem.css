@@ -9,15 +9,12 @@
     margin-top: 1px;
     transition: 1s;
 }
-
 .col:last-child {
     border: none;
 }
-
 .col {width: 25%;
     border-right: 1px solid white;
     text-align: center}
-
 .del-btn {
     margin: 0 auto;
     border-radius: 3px;

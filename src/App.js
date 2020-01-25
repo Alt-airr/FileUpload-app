@@ -82,41 +82,55 @@ class App extends Component {
         }
     }
     onItemDelete(index) {
-        this.setState({
-            selectedFile: this.state.selectedFile.splice(index + 1, 1)
-        });
+        let arr = this.state.selectedFile;
+        arr.splice(index, 1);
+        this.setState({selectedFile: arr});
         this.fileInput.value = null;
     }
 
     render() {
-        console.log('eto state ', this.state.selectedFile)
-        let selectedFiles = this.state.selectedFile.length > 0 ? this.state.selectedFile.map((f, index) =>
-            <FileItem file={f}
-                      index={index}
-                      onItemDelete={this.onItemDelete}/>) : null;
-        const headers = this.state.selectedFile.length > 0 ? <div className='headers'>
-            <div className='titleCol'>
-                Title
+        let headers, selectedFiles, fileBar = null;
+
+        if (this.state.selectedFile.length > 0){
+            selectedFiles = this.state.selectedFile.map((f, index) =>
+                <FileItem file={f}
+                          index={index}
+                          onItemDelete={this.onItemDelete}/>);
+
+            headers = <div className='headers'>
+                <div className='titleCol'>
+                    Title
+                </div>
+                <div className='titleCol'>
+                    Weight
+                </div>
+                <div className='titleCol'>
+                    Format type
+                </div>
+                <div className='titleCol'>
+                    Delete item
+                </div>
+            </div>;
+
+            fileBar = <div><Progress max="100" color="success"
+                                     value={this.state.loaded}>{Math.round(this.state.loaded, 2)}%</Progress>
+                <button type="button" className="btn btn-success btn-block" onClick={this.onClickHandler}>Submit
+                </button>
             </div>
-            <div className='titleCol'>
-                Weight
-            </div>
-            <div className='titleCol'>
-                Format type
-            </div>
-            <div className='titleCol'>
-                Delete item
-            </div>
-        </div> : null;
+        }
+
         return (
             <div className="app-wrapper">
                 <div className="container">
-                    <div className="offset">
-                        <div className="form-group files">
-                            <label>Upload Your File </label>
-                            <input type="file" className="form-control" ref={(input) => {
+                    <div className="inpt">
+                        <div className="form-group">
+                            <input type="file" name="file" id="file" className="input-file" ref={(input) => {
                                 this.fileInput = input
                             }} multiple onChange={this.onChangeHandler}/>
+                            <label htmlFor="file" className="btn btn-tertiary js-labelFile">
+                                <i className="icon fa fa-check"></i>
+                                <span className="js-fileName">Upload file</span>
+                            </label>
                         </div>
                     </div>
                     <div className="form-group">
@@ -125,11 +139,8 @@ class App extends Component {
                         <div className='fileItems'>
                             {selectedFiles}
                         </div>
-                        <Progress max="100" color="success"
-                                  value={this.state.loaded}>{Math.round(this.state.loaded, 2)}%</Progress>
+                            {fileBar}
                     </div>
-                    <button type="button" className="btn btn-success btn-block" onClick={this.onClickHandler}>Upload
-                    </button>
                 </div>
             </div>
         );

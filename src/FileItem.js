@@ -2,7 +2,6 @@ import React from 'react';
 import './css/FileItem.css'
 
 const FileItem = (props) => {
-    console.log('index ', props.index)
     const deleteItem = () => {
         props.onItemDelete(props.index)
     };
@@ -23,7 +22,6 @@ const FileItem = (props) => {
                     Х
                 </button>
             </div>
-
         </div>
     )
 }
